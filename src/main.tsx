@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 
 import App from "./App.tsx";
 
+import "./styles/main.css";
 import "@radix-ui/themes/styles.css";
 import { Theme } from "@radix-ui/themes";
 
@@ -14,7 +15,6 @@ createRoot(document.getElementById("root")!).render(
       panelBackground="solid"
       grayColor="slate"
       radius="full"
-      scaling="110%"
     >
       <App />
     </Theme>

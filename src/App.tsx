@@ -6,7 +6,13 @@ function App() {
   }
 
   return (
-    <Flex direction="row" gap="2">
+    <Flex
+      direction="column"
+      gap="2"
+      align="center"
+      justify="center"
+      height="100vh"
+    >
       <Text>Hi</Text>
       <Button onClick={handleClick}>Click me</Button>
     </Flex>

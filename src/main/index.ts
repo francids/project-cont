@@ -9,13 +9,15 @@ function createWindow() {
   const win = new BrowserWindow({
     title: "Project Cont",
     icon: iconPath,
+    minWidth: 800,
+    minHeight: 600,
+    center: true,
+    autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, "../preload/index.js"),
-      devTools: false
-    }
+      devTools: false,
+    },
   });
-
-  win.menuBarVisible = false;
 
   if (process.env.NODE_ENV === "development") {
     win.loadURL("http://localhost:5173")
