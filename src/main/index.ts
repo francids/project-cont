@@ -3,8 +3,8 @@ import path from "path";
 
 function createWindow() {
   const iconPath = process.platform === "win32"
-    ? path.join(process.cwd(), "assets", "Logo.ico")
-    : path.join(process.cwd(), "assets", "Logo.svg");
+    ? path.join(process.cwd(), "src/assets", "Logo.ico")
+    : path.join(process.cwd(), "src/assets", "Logo.svg");
 
   const win = new BrowserWindow({
     title: "Project Cont",

@@ -1,6 +1,6 @@
 import { Button, Flex, Text } from "@radix-ui/themes";
 
-function App() {
+export default function App() {
   function handleClick() {
     alert("Hello");
   }
@@ -12,5 +12,3 @@ function App() {
     </Flex>
   );
 }
-
-export default App;

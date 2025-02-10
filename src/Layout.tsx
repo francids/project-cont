@@ -9,8 +9,8 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <Flex direction="column" height="100vh" width="100vw" style={styles.layout}>
       <Header></Header>
-      <Flex style={{ backgroundColor: "var(--accent-2)", flex: 1 }}>
-        <Container style={{}}>{children}</Container>
+      <Flex style={styles.main}>
+        <Container>{children}</Container>
       </Flex>
     </Flex>
   );
@@ -19,5 +19,9 @@ export default function Layout({ children }: LayoutProps) {
 const styles: Styles = {
   layout: {
     userSelect: "none",
+  },
+  main: {
+    flex: 1,
+    backgroundColor: "var(--accent-2)",
   },
 };

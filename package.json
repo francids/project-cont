@@ -19,10 +19,10 @@
   },
   "build": {
     "win": {
-      "icon": "assets/Logo.ico"
+      "icon": "src/assets/Logo.ico"
     },
     "linux": {
-      "icon": "assets/Logo.svg"
+      "icon": "src/assets/Logo.svg"
     }
   },
   "dependencies": {

@@ -1,10 +1,11 @@
 import { Button } from "@radix-ui/themes";
 import { Link } from "react-router-dom";
+import logo from "../assets/Logotipo.svg";
 
 export default function Header() {
   return (
     <header style={styles.header}>
-      <span>Cont</span>
+      <img src={logo} alt="Project Cont" style={styles.logo} />
       <nav style={styles.nav}>
         <Link to="#">
           <Button variant="ghost">Declaraciones</Button>
@@ -18,6 +19,10 @@ export default function Header() {
 }
 
 const styles: Styles = {
+  logo: {
+    height: "1rem",
+    pointerEvents: "none",
+  },
   header: {
     display: "flex",
     justifyContent: "space-between",
