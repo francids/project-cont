@@ -5,12 +5,14 @@ import logo from "../assets/Logotipo.svg";
 export default function Header() {
   return (
     <header style={styles.header}>
-      <img src={logo} alt="Project Cont" style={styles.logo} />
+      <Link to="/">
+        <img src={logo} alt="Project Cont" style={styles.logo} />
+      </Link>
       <nav style={styles.nav}>
         <Link to="#">
           <Button variant="ghost">Declaraciones</Button>
         </Link>
-        <Link to="#">
+        <Link to="utilities">
           <Button variant="ghost">Utilidades</Button>
         </Link>
       </nav>
@@ -28,13 +30,13 @@ const styles: Styles = {
     justifyContent: "space-between",
     alignItems: "center",
     height: "3.5rem",
-    paddingInline: "2rem",
+    paddingInline: "var(--space-6)",
     borderBottom: "1px solid var(--accent-6)",
     backgroundColor: "var(--accent-2)",
   },
   nav: {
     display: "flex",
     flexDirection: "row",
-    gap: "1rem",
+    gap: "var(--space-5)",
   },
 };

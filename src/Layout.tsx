@@ -23,5 +23,7 @@ const styles: Styles = {
   main: {
     flex: 1,
     backgroundColor: "var(--accent-2)",
+    paddingBlock: "var(--space-4)",
+    paddingInline: "var(--space-6)",
   },
 };
