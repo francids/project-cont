@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, ipcMain } from "electron";
 import path from "path";
 
 function createWindow() {
@@ -14,9 +14,15 @@ function createWindow() {
     center: true,
     autoHideMenuBar: true,
     webPreferences: {
-      preload: path.join(__dirname, "../preload/index.js"),
-      devTools: false,
+      preload: path.join(__dirname, "../preload/index.mjs"),
+      devTools: (process.env.NODE_ENV === "development"),
+      nodeIntegrationInWorker: true,
+      sandbox: false,
     },
+  });
+
+  ipcMain.handle("query-rnc", async (_event, search) => {
+    return "RNC query result " + search;
   });
 
   if (process.env.NODE_ENV === "development") {

@@ -1,25 +1,43 @@
-import { defineConfig } from "electron-vite";
+import { defineConfig } from 'electron-vite'
+import { resolve } from 'path'
 
 export default defineConfig({
   main: {
+    root: ".",
     build: {
-      lib: {
-        entry: "src/main/index.ts"
+      rollupOptions: {
+        input: {
+          index: resolve(__dirname, "desktop/main/main.ts")
+        },
+        output: {
+          format: "es"
+        }
       }
     }
   },
   preload: {
+    root: ".",
     build: {
-      lib: {
-        entry: "src/preload/index.ts"
+      outDir: "out/preload",
+      rollupOptions: {
+        input: {
+          index: resolve(__dirname, "desktop/preload/preload.ts")
+        },
+        output: {
+          dir: resolve(__dirname, "out/preload"),
+          entryFileNames: "index.mjs",
+          format: "es"
+        }
       }
     }
   },
   renderer: {
-    root: '.',
+    root: ".",
     build: {
       rollupOptions: {
-        input: "index.html"
+        input: {
+          index: resolve(__dirname, "index.html")
+        }
       }
     }
   }
