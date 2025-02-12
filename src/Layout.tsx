@@ -10,7 +10,9 @@ export default function Layout({ children }: LayoutProps) {
     <Flex direction="column" style={styles.layout}>
       <Header></Header>
       <ScrollArea style={styles.main}>
-        <Container size="4">{children}</Container>
+        <Container style={styles.container} size="4">
+          {children}
+        </Container>
       </ScrollArea>
     </Flex>
   );
@@ -30,10 +32,13 @@ const styles: Styles = {
     width: "100%",
     height: "calc(100% - 3.5rem)",
     backgroundColor: "var(--accent-2)",
-    paddingTop: "var(--space-4)",
     paddingInline: "var(--space-6)",
     marginTop: "3.5rem",
     overflowX: "hidden",
     boxSizing: "border-box",
+  },
+  container: {
+    marginTop: "var(--space-4)",
+    marginBottom: "var(--space-6)",
   },
 };
