@@ -1,4 +1,5 @@
 import { app, BrowserWindow, ipcMain } from "electron";
+import { readFile } from "fs/promises";
 import path from "path";
 
 function createWindow() {
@@ -21,8 +22,39 @@ function createWindow() {
     },
   });
 
-  ipcMain.handle("query-rnc", async (_event, search) => {
-    return "RNC query result " + search;
+  ipcMain.handle("query-rnc", async function (_event, search: string) {
+    try {
+      const filePath = path.join(__dirname, "../../resources/DGII_RNC.txt");
+      const content = await readFile(filePath, "utf-8");
+
+      const results = content
+        .split("\n")
+        .filter(line => {
+          const [rnc, razonSocial] = line.split("|");
+          if (!rnc || !razonSocial) return false;
+          const searchLower = search.toLowerCase();
+          return rnc.includes(search) ||
+            razonSocial.toLowerCase().includes(searchLower);
+        })
+        .slice(0, 10);
+
+      return results
+        .map(line => {
+          const [rnc, razonSocial, nombreComercial, actividad, , , , , fecha, estado, regimen] = line.split("|");
+          return {
+            rnc,
+            razonSocial: razonSocial.trim(),
+            nombreComercial: nombreComercial.trim(),
+            actividad: actividad.trim(),
+            fecha: fecha.trim(),
+            estado: estado.trim(),
+            regimen: regimen.trim()
+          };
+        });
+    } catch (error) {
+      console.error("Error al consultar RNC: ", error);
+      throw error;
+    }
   });
 
   if (process.env.NODE_ENV === "development") {

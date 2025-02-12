@@ -29,3 +29,7 @@ dist-ssr
 # Electron
 out/
 release/
+
+# Tengo la idea de que no puedo compartir esto
+resources/*
+!resources/README.md

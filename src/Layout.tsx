@@ -1,4 +1,4 @@
-import { Container, Flex } from "@radix-ui/themes";
+import { Container, Flex, ScrollArea } from "@radix-ui/themes";
 import Header from "./components/Header";
 
 interface LayoutProps {
@@ -7,11 +7,11 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <Flex direction="column" height="100vh" width="100vw" style={styles.layout}>
+    <Flex direction="column" style={styles.layout}>
       <Header></Header>
-      <Flex style={styles.main}>
-        <Container>{children}</Container>
-      </Flex>
+      <ScrollArea style={styles.main}>
+        <Container size="4">{children}</Container>
+      </ScrollArea>
     </Flex>
   );
 }
@@ -19,11 +19,21 @@ export default function Layout({ children }: LayoutProps) {
 const styles: Styles = {
   layout: {
     userSelect: "none",
+    overflow: "hidden",
+    height: "100vh",
+    width: "100%",
+    position: "relative",
+    boxSizing: "border-box",
   },
   main: {
     flex: 1,
+    width: "100%",
+    height: "calc(100% - 3.5rem)",
     backgroundColor: "var(--accent-2)",
-    paddingBlock: "var(--space-4)",
+    paddingTop: "var(--space-4)",
     paddingInline: "var(--space-6)",
+    marginTop: "3.5rem",
+    overflowX: "hidden",
+    boxSizing: "border-box",
   },
 };
