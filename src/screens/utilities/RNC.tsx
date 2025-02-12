@@ -11,7 +11,7 @@ import {
 } from "@radix-ui/themes";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
-import type RNC from "../../types/RNC";
+import type RNC from "../../interfaces/RNC";
 
 export default function RNC() {
   const [search, setSearch] = useState<string>("");
