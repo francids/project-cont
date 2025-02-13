@@ -7,8 +7,8 @@ import HomeScreen from "./screens/Home";
 import StatementsScreen from "./screens/statements/StatementsScreen";
 import PurchasingFormatScreen from "./screens/statements/PurchasingFormatScreen";
 import ShippingFormatScreen from "./screens/statements/ShippingFormatScreen";
-import UtilitiesScreen from "./screens/utilities/Utilities";
-import RNCScreen from "./screens/utilities/RNC";
+import UtilitiesScreen from "./screens/utilities/UtilitiesScreen";
+import RNCScreen from "./screens/utilities/RNCScreen";
 
 export default function App() {
   return (
