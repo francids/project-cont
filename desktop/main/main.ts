@@ -1,11 +1,12 @@
 import { app, BrowserWindow, ipcMain } from "electron";
 import { readFile } from "fs/promises";
 import path from "path";
+import { initDatabase } from "./database/database";
 
 function createWindow() {
   const iconPath = process.platform === "win32"
-    ? path.join(process.cwd(), "src/assets", "Logo.ico")
-    : path.join(process.cwd(), "src/assets", "Logo.svg");
+    ? path.join(process.cwd(), "src", "assets", "Logo.ico")
+    : path.join(process.cwd(), "src", "assets", "Logo.svg");
 
   const win = new BrowserWindow({
     title: "Project Cont",
@@ -21,6 +22,7 @@ function createWindow() {
       sandbox: false,
     },
   });
+  win.maximize();
 
   ipcMain.handle("query-rnc", async function (_event, search: string) {
     try {
@@ -32,7 +34,7 @@ function createWindow() {
 
       const results = content
         .split("\n")
-        .filter(line => {
+        .filter(function (line) {
           const [rnc, razonSocial] = line.split("|");
           if (!rnc || !razonSocial) return false;
           const searchLower = search.toLowerCase();
@@ -42,7 +44,7 @@ function createWindow() {
         .slice(0, 10);
 
       return results
-        .map(line => {
+        .map(function (line) {
           const [rnc, razonSocial, nombreComercial, actividad, , , , , fecha, estado, regimen] = line.split("|");
           return {
             rnc,
@@ -67,4 +69,7 @@ function createWindow() {
   }
 }
 
-app.whenReady().then(createWindow);
+app.whenReady().then(async function () {
+  await initDatabase();
+  createWindow();
+});

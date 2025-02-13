@@ -1,21 +1,21 @@
 import { Button } from "@radix-ui/themes";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logo from "../assets/Logotipo.svg";
 
 export default function Header() {
   return (
     <header style={styles.header}>
       <div style={styles.container}>
-        <Link to="/">
+        <NavLink to="/">
           <img src={logo} alt="Project Cont" style={styles.logo} />
-        </Link>
+        </NavLink>
         <nav style={styles.nav}>
-          <Link to="#">
+          <NavLink to="statements">
             <Button variant="ghost">Declaraciones</Button>
-          </Link>
-          <Link to="utilities">
+          </NavLink>
+          <NavLink to="utilities">
             <Button variant="ghost">Utilidades</Button>
-          </Link>
+          </NavLink>
         </nav>
       </div>
     </header>

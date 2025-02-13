@@ -1,5 +1,5 @@
-import { defineConfig } from 'electron-vite'
-import { resolve } from 'path'
+import { defineConfig, externalizeDepsPlugin } from "electron-vite";
+import { resolve } from "path";
 
 export default defineConfig({
   main: {
@@ -13,7 +13,10 @@ export default defineConfig({
           format: "es"
         }
       }
-    }
+    },
+    plugins: [
+      externalizeDepsPlugin(),
+    ]
   },
   preload: {
     root: ".",

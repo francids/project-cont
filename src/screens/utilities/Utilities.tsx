@@ -1,7 +1,7 @@
 import { Card, Flex, Grid, Heading, Separator, Text } from "@radix-ui/themes";
 import { Link } from "react-router-dom";
 
-export default function Utilities() {
+export default function UtilitiesScreen() {
   return (
     <Flex direction="column" align="baseline" gap="2">
       <Heading>Utilidades</Heading>

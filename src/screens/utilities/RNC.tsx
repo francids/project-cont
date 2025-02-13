@@ -13,7 +13,7 @@ import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
 import type RNC from "../../interfaces/RNC";
 
-export default function RNC() {
+export default function RNCScreen() {
   const [search, setSearch] = useState<string>("");
   const [result, setResult] = useState<RNC[]>([]);
 

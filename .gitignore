@@ -33,3 +33,6 @@ release/
 # Tengo la idea de que no puedo compartir esto
 resources/*
 !resources/README.md
+
+# PouchDB
+data/

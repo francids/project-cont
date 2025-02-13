@@ -1,6 +1,6 @@
 import { Code, Flex, Heading } from "@radix-ui/themes";
 
-export default function Home() {
+export default function HomeScreen() {
   return (
     <Flex direction="column" align="baseline" gap="2">
       <Heading>
