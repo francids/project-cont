@@ -10,12 +10,12 @@
   "main": "./out/main/index.js",
   "scripts": {
     "dev": "electron-vite dev",
-    "build": "electron-vite build",
-    "lint": "eslint .",
+    "prebuild": "electron-vite build",
     "preview": "electron-vite preview",
     "pack": "electron-builder --dir",
     "dist": "electron-vite build && electron-builder",
     "prepare": "husky",
+    "lint": "eslint .",
     "counter_states": "tsx scripts/counter_states.ts"
   },
   "build": {
@@ -24,7 +24,13 @@
     },
     "linux": {
       "icon": "src/assets/Logo.svg"
-    }
+    },
+    "extraResources": [
+      {
+        "from": "resources/DGII_RNC.TXT",
+        "to": "DGII_RNC.TXT"
+      }
+    ]
   },
   "dependencies": {
     "@radix-ui/react-icons": "^1.3.2",

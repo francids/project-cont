@@ -24,7 +24,10 @@ function createWindow() {
 
   ipcMain.handle("query-rnc", async function (_event, search: string) {
     try {
-      const filePath = path.join(__dirname, "../../resources/DGII_RNC.txt");
+      const fileName = "DGII_RNC.txt";
+      const filePath = process.env.NODE_ENV === "development"
+        ? path.join(app.getAppPath(), "resources", fileName)
+        : path.join(process.resourcesPath, fileName);
       const content = await readFile(filePath, "utf-8");
 
       const results = content
