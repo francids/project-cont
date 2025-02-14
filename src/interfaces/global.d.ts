@@ -10,5 +10,9 @@ declare global {
     electron: {
       queryRNC: (search: string) => Promise<RNC[]>;
     };
+    theme: {
+      get: () => Promise<boolean>;
+      onUpdated: (listener: (darkMode: boolean) => void) => void;
+    }
   };
 };

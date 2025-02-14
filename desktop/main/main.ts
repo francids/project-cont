@@ -1,9 +1,11 @@
-import { app, BrowserWindow, ipcMain } from "electron";
+import { app, BrowserWindow, ipcMain, nativeTheme } from "electron";
 import { readFile } from "fs/promises";
 import path from "path";
 import { initDatabase } from "./database/database";
 
 function createWindow() {
+  nativeTheme.themeSource = "system";
+
   const iconPath = process.platform === "win32"
     ? path.join(process.cwd(), "src", "assets", "Logo.ico")
     : path.join(process.cwd(), "src", "assets", "Logo.svg");
@@ -22,7 +24,16 @@ function createWindow() {
       sandbox: false,
     },
   });
+
   win.maximize();
+
+  nativeTheme.on("updated", function () {
+    win.webContents.send("theme-updated", nativeTheme.shouldUseDarkColors);
+  });
+
+  ipcMain.handle("get-theme", function () {
+    return nativeTheme.shouldUseDarkColors;
+  });
 
   ipcMain.handle("query-rnc", async function (_event, search: string) {
     try {

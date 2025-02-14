@@ -1,13 +1,25 @@
-import { Button } from "@radix-ui/themes";
+import { Button, useThemeContext } from "@radix-ui/themes";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/Logotipo.svg";
 
 export default function Header() {
+  const { appearance } = useThemeContext();
+
   return (
     <header style={styles.header}>
       <div style={styles.container}>
         <NavLink to="/">
-          <img src={logo} alt="Project Cont" style={styles.logo} />
+          <img
+            src={logo}
+            alt="Project Cont"
+            style={{
+              ...styles.logo,
+              filter:
+                appearance === "dark"
+                  ? "invert(83%) sepia(5%) saturate(2207%) hue-rotate(195deg) brightness(105%) contrast(102%)"
+                  : "",
+            }}
+          />
         </NavLink>
         <nav style={styles.nav}>
           <NavLink to="statements">
