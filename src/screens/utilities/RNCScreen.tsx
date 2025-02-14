@@ -8,24 +8,54 @@ import {
   DataList,
   Badge,
   Box,
+  Dialog,
+  Spinner,
 } from "@radix-ui/themes";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type RNC from "../../interfaces/RNC";
 
 export default function RNCScreen() {
+  useEffect(() => {
+    searchInputRef.current?.focus();
+  }, []);
+
   const [search, setSearch] = useState<string>("");
   const [result, setResult] = useState<RNC[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>("");
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   async function handleSearch() {
+    if (search.length < 3) {
+      setErrorMessage("Por favor, ingrese al menos 3 caracteres para buscar");
+      return;
+    }
+
     try {
+      setIsLoading(true);
       if (!window.electron) {
-        throw new Error("La API de Electron no está disponible");
+        throw new Error("electron_not_available");
       }
       const data = await window.electron.queryRNC(search);
       setResult(data);
+      setErrorMessage("");
     } catch (error) {
       console.error("Error al consultar RNC", error);
+      const mensaje =
+        (error as { message: string }).message === "electron_not_available"
+          ? "Lo sentimos, hay un problema técnico con la aplicación. Por favor, reiníciela."
+          : "No pudimos realizar la consulta en este momento. Por favor, inténtelo de nuevo.";
+      setErrorMessage(mensaje);
+    } finally {
+      setIsLoading(false);
+      searchInputRef.current?.focus();
+    }
+  }
+
+  function handleKeyPress(event: React.KeyboardEvent) {
+    if (event.key === "Enter" && !isLoading) {
+      handleSearch();
     }
   }
 
@@ -39,13 +69,23 @@ export default function RNCScreen() {
           style={styles.search}
           value={search}
           onChange={(event) => setSearch(event.target.value)}
+          onKeyUp={handleKeyPress}
+          disabled={isLoading}
+          ref={searchInputRef}
         >
           <TextField.Slot>
             <MagnifyingGlassIcon height="16" width="16" />
           </TextField.Slot>
         </TextField.Root>
-        <Button variant="surface" onClick={handleSearch}>
-          Buscar
+        <Button variant="surface" onClick={handleSearch} disabled={isLoading}>
+          {isLoading ? (
+            <Flex gap="2" align="center">
+              <Spinner size="1" />
+              Buscando...
+            </Flex>
+          ) : (
+            "Buscar"
+          )}
         </Button>
       </Flex>
 
@@ -152,6 +192,20 @@ export default function RNCScreen() {
           </Table.Root>
         )}
       </Box>
+
+      {errorMessage && (
+        <Dialog.Root open={Boolean(errorMessage)}>
+          <Dialog.Content>
+            <Dialog.Title>¡Ups! Algo salió mal</Dialog.Title>
+            <Dialog.Description>{errorMessage}</Dialog.Description>
+            <Flex gap="3" mt="4" justify="end">
+              <Dialog.Close>
+                <Button onClick={() => setErrorMessage("")}>Entendido</Button>
+              </Dialog.Close>
+            </Flex>
+          </Dialog.Content>
+        </Dialog.Root>
+      )}
     </Flex>
   );
 }
