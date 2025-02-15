@@ -5,7 +5,7 @@
   "author": {
     "name": "Francisco Mesa"
   },
-  "version": "0.0.0",
+  "version": "0.0.2",
   "type": "module",
   "main": "./out/main/index.js",
   "scripts": {
@@ -16,6 +16,7 @@
     "dist": "electron-vite build && electron-builder",
     "prepare": "husky",
     "lint": "eslint .",
+    "versioning": "standard-version",
     "counter_states": "tsx scripts/counter_states.ts"
   },
   "build": {
@@ -58,6 +59,7 @@
     "eslint-plugin-react-refresh": "^0.4.18",
     "globals": "^15.14.0",
     "husky": "^9.1.7",
+    "standard-version": "^9.5.0",
     "tsx": "^4.19.2",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.22.0",
