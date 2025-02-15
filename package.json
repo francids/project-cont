@@ -16,7 +16,7 @@
     "dist": "electron-vite build && electron-builder",
     "prepare": "husky",
     "lint": "eslint .",
-    "versioning": "standard-version",
+    "versioning": "standard-version && git push --follow-tags origin main --no-verify",
     "counter_states": "tsx scripts/counter_states.ts"
   },
   "build": {

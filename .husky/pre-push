@@ -1,4 +1,7 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm run versioning
+# Verificar si es un push de versioning
+if ! git log -1 --pretty=%B | grep -q "chore(release):"; then
+  npm run versioning
+fi
