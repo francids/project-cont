@@ -5,9 +5,56 @@
   "author": {
     "name": "Francisco Mesa"
   },
-  "version": "0.0.5",
+  "version": "0.0",
   "type": "module",
   "main": "./out/main/index.js",
+  "standard-version": {
+    "header": "# Changelog\n\nAll notable changes to this project will be documented in this file.",
+    "types": [
+      {
+        "type": "feat",
+        "section": "Features"
+      },
+      {
+        "type": "fix",
+        "section": "Bug Fixes"
+      },
+      {
+        "type": "chore",
+        "hidden": true
+      },
+      {
+        "type": "docs",
+        "hidden": true
+      },
+      {
+        "type": "style",
+        "hidden": true
+      },
+      {
+        "type": "refactor",
+        "hidden": true
+      },
+      {
+        "type": "perf",
+        "hidden": true
+      },
+      {
+        "type": "test",
+        "hidden": true
+      }
+    ],
+    "releaseCommitMessageFormat": "chore(release): {{currentTag}}",
+    "bumpFiles": [
+      {
+        "filename": "package.json",
+        "type": "json"
+      }
+    ],
+    "skip": {
+      "patch": true
+    }
+  },
   "scripts": {
     "dev": "electron-vite dev",
     "prebuild": "electron-vite build",
