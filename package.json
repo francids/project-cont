@@ -5,7 +5,7 @@
   "author": {
     "name": "Francisco Mesa"
   },
-  "version": "0.1",
+  "version": "0.1.0",
   "type": "module",
   "main": "./out/main/index.js",
   "standard-version": {
