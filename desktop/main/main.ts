@@ -43,14 +43,18 @@ function createWindow() {
         : path.join(process.resourcesPath, fileName);
       const content = await readFile(filePath, "utf-8");
 
+      const searchTerms = search.toLowerCase().split(' ').filter(term => term.length > 0);
+
       const results = content
         .split("\n")
         .filter(function (line) {
           const [rnc, razonSocial] = line.split("|");
           if (!rnc || !razonSocial) return false;
-          const searchLower = search.toLowerCase();
-          return rnc.includes(search) ||
-            razonSocial.toLowerCase().includes(searchLower);
+
+          const razonSocialLower = razonSocial.toLowerCase();
+          return searchTerms.every(term =>
+            rnc.includes(term) || razonSocialLower.includes(term)
+          );
         })
         .slice(0, 10);
 
