@@ -1,6 +1,13 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
+### [0.1.2](https://github.com/francids/project-cont/compare/v0.1.1...v0.1.2) (2025-02-19)
+
+
+### Features
+
+* Improve search with multiple terms in the content ([238d678](https://github.com/francids/project-cont/commit/238d678ad99171316acf83fdcff591d6e8a540b5))
+
 ### [0.1.1](https://github.com/francids/project-cont/compare/v0.0.5...v0.1.1) (2025-02-18)
 
 ### [0.0.5](https://github.com/francids/project-cont/compare/v0.0.3...v0.0.5) (2025-02-18)
