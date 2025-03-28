@@ -1,6 +1,13 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
+### [0.1.3](https://github.com/francids/project-cont/compare/v0.1.2...v0.1.3) (2025-03-28)
+
+
+### Features
+
+* Add settings screen with theme and language options, and display app version ([882701c](https://github.com/francids/project-cont/commit/882701c28d826499dc55d8a36509f06fb232fd0a))
+
 ### [0.1.2](https://github.com/francids/project-cont/compare/v0.1.1...v0.1.2) (2025-02-19)
 
 
