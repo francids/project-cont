@@ -1,1 +1,6 @@
-npm run lint
+# Linting
+pnpm lint
+
+# Version bump
+pnpm version:patch
+git add package.json
