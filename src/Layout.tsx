@@ -8,7 +8,7 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <Flex direction="column" style={styles.layout}>
-      <Header></Header>
+      <Header />
       <ScrollArea style={styles.main}>
         <Container style={styles.container} size="4">
           {children}

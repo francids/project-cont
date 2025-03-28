@@ -5,6 +5,12 @@ contextBridge.exposeInMainWorld("electron", {
   queryRNC: async (search: string) => await ipcRenderer.invoke("query-rnc", search),
 });
 
+contextBridge.exposeInMainWorld("app", {
+  version: async function () {
+    return await ipcRenderer.invoke("version-app");
+  }
+});
+
 contextBridge.exposeInMainWorld("theme", {
   get: async function () {
     return await ipcRenderer.invoke("get-theme");

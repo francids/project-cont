@@ -9,6 +9,7 @@ import PurchasingFormatScreen from "./screens/statements/PurchasingFormatScreen"
 import ShippingFormatScreen from "./screens/statements/ShippingFormatScreen";
 import UtilitiesScreen from "./screens/utilities/UtilitiesScreen";
 import RNCScreen from "./screens/utilities/RNCScreen";
+import SettingsScreen from "./screens/settings/SettingsScreen";
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
             <Route index element={<UtilitiesScreen />} />
             <Route path="rnc" element={<RNCScreen />} />
           </Route>
+          <Route path="settings" element={<SettingsScreen />} />
           <Route path="*" element={<NotFoundScreen />} />
         </Routes>
       </Layout>

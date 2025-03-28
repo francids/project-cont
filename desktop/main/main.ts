@@ -25,10 +25,12 @@ function createWindow() {
     },
   });
 
-  win.maximize();
-
   nativeTheme.on("updated", function () {
     win.webContents.send("theme-updated", nativeTheme.shouldUseDarkColors);
+  });
+
+  ipcMain.handle("version-app", function () {
+    return app.getVersion();
   });
 
   ipcMain.handle("get-theme", function () {

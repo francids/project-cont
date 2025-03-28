@@ -22,11 +22,14 @@ export default function Header() {
           />
         </NavLink>
         <nav style={styles.nav}>
-          <NavLink to="statements">
+          {/* <NavLink to="statements">
             <Button variant="ghost">Declaraciones</Button>
-          </NavLink>
+          </NavLink> */}
           <NavLink to="utilities">
             <Button variant="ghost">Utilidades</Button>
+          </NavLink>
+          <NavLink to="settings">
+            <Button variant="ghost">Configuración</Button>
           </NavLink>
         </nav>
       </div>
